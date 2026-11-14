@@ -1,0 +1,6 @@
+{
+  "name": "ТЕНЬ",
+  "description": "ТЕНЬ — منصة تواصل اجتماعي داكنة وأنيقة للمنشورات، التفاعلات، المتابعة، والمحادثات الفورية.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

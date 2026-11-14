@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">ТЕНЬ</string>
+    <string name="brand_tagline">مساحتك في الظل — شارك أفكارك، تواصل بعمق</string>
+    <string name="sign_in_with_google">تسجيل الدخول بحساب Google</string>
+    <string name="signing_in">جارٍ تسجيل الدخول…</string>
+    <string name="sign_out">تسجيل الخروج</string>
+
+    <string name="nav_feed">الرئيسية</string>
+    <string name="nav_explore">استكشاف</string>
+    <string name="nav_messages">الرسائل</string>
+    <string name="nav_profile">ملفي</string>
+
+    <string name="filter_all">الكل</string>
+    <string name="filter_following">المتابَعون</string>
+
+    <string name="new_post">منشور جديد</string>
+    <string name="post_placeholder">ماذا يدور في الظل اليوم؟</string>
+    <string name="publish_post">نشر</string>
+    <string name="cancel">إلغاء</string>
+    <string name="save">حفظ</string>
+    <string name="delete">حذف</string>
+
+    <string name="comments_title">التعليقات</string>
+    <string name="comment_placeholder">أضف تعليقاً…</string>
+    <string name="send">إرسال</string>
+
+    <string name="search_hint">ابحث عن أعضاء أو منشورات أو وسوم…</string>
+    <string name="suggested_members">أعضاء ТЕНЬ</string>
+    <string name="follow">متابعة</string>
+    <string name="following">متابَع</string>
+    <string name="message">مراسلة</string>
+
+    <string name="messages_title">الرسائل الخاصة</string>
+    <string name="start_chat">محادثة جديدة</string>
+    <string name="message_placeholder">اكتب رسالتك…</string>
+
+    <string name="my_posts">منشوراتي</string>
+    <string name="bookmarks">المحفوظات</string>
+    <string name="edit_profile">تعديل الملف الشخصي</string>
+    <string name="display_name_label">الاسم المعروض</string>
+    <string name="username_label">اسم المستخدم</string>
+    <string name="bio_label">النبذة التعريفية</string>
+    <string name="followers_label">متابع</string>
+    <string name="following_label">يتابع</string>
+    <string name="posts_label">منشور</string>
+
+    <string name="empty_feed_title">لا توجد منشورات بعد</string>
+    <string name="empty_feed_desc">كن أول من يترك أثراً في ТЕНЬ بنشر فكرة جديدة.</string>
+    <string name="empty_messages_title">لا توجد محادثات بعد</string>
+    <string name="empty_messages_desc">ابدأ محادثة خاصة مع أي عضو من مجتمع ТЕНЬ.</string>
+    <string name="empty_bookmarks_desc">احفظ المنشورات التي تلهمك لتظهر هنا.</string>
+
+    <string name="cd_brand_logo">شعار تطبيق ТЕНЬ</string>
+    <string name="cd_like">إعجاب</string>
+    <string name="cd_comment">تعليقات</string>
+    <string name="cd_bookmark">حفظ المنشور</string>
+    <string name="cd_delete_post">حذف المنشور</string>
+    <string name="cd_create_post">إنشاء منشور جديد</string>
+    <string name="cd_back">رجوع</string>
+    <string name="cd_toggle_theme">تبديل المظهر</string>
+</resources>

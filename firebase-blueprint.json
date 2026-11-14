@@ -1,0 +1,185 @@
+{
+  "entities": {
+    "PublicUser": {
+      "title": "PublicUser",
+      "description": "Public social profile for a ТЕНЬ user without PII.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Firebase Auth UID matching document ID." },
+        "displayName": { "type": "string", "description": "Public display name (1-50 chars)." },
+        "username": { "type": "string", "description": "Unique-style handle (3-30 chars)." },
+        "bio": { "type": "string", "description": "Short biography (0-200 chars)." },
+        "photoUrl": { "type": "string", "description": "Optional avatar URL (0-500 chars)." },
+        "isDiscoverable": { "type": "boolean", "description": "Whether profile appears in community discovery." },
+        "followersCount": { "type": "integer", "description": "Total followers count." },
+        "followingCount": { "type": "integer", "description": "Total following count." },
+        "postsCount": { "type": "integer", "description": "Total posts count." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update." }
+      },
+      "required": ["userId", "displayName", "username", "isDiscoverable", "followersCount", "followingCount", "postsCount", "createdAt", "updatedAt"]
+    },
+    "PrivateUser": {
+      "title": "PrivateUser",
+      "description": "Private PII and account metadata restricted strictly to the owner.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Firebase Auth UID matching document ID." },
+        "email": { "type": "string", "description": "User email address from Google Sign-In." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update." }
+      },
+      "required": ["userId", "createdAt", "updatedAt"]
+    },
+    "Post": {
+      "title": "Post",
+      "description": "A social post published on ТЕНЬ.",
+      "type": "object",
+      "properties": {
+        "authorId": { "type": "string", "description": "Author UID." },
+        "authorName": { "type": "string", "description": "Denormalized author display name." },
+        "authorHandle": { "type": "string", "description": "Denormalized author handle." },
+        "authorPhotoUrl": { "type": "string", "description": "Denormalized author avatar URL." },
+        "content": { "type": "string", "description": "Post text content (1-500 chars)." },
+        "tag": { "type": "string", "description": "Topic tag (1-30 chars)." },
+        "cardStyle": { "type": "string", "enum": ["standard", "quote", "obsidian"], "description": "Visual presentation style." },
+        "visibility": { "type": "string", "enum": ["public"], "description": "Post visibility scope." },
+        "likesCount": { "type": "integer", "description": "Number of likes." },
+        "commentsCount": { "type": "integer", "description": "Number of comments." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Server timestamp on creation." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Server timestamp on update." }
+      },
+      "required": ["authorId", "authorName", "authorHandle", "content", "tag", "cardStyle", "visibility", "likesCount", "commentsCount", "createdAt", "updatedAt"]
+    },
+    "PostLike": {
+      "title": "PostLike",
+      "description": "Atomic like marker for a post by a user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "postId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "postId", "createdAt"]
+    },
+    "UserLikedPost": {
+      "title": "UserLikedPost",
+      "description": "Private index of post IDs liked by the current user.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "postId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "postId", "createdAt"]
+    },
+    "Bookmark": {
+      "title": "Bookmark",
+      "description": "User's saved post reference.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "postId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "postId", "createdAt"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "A reply/comment on a post.",
+      "type": "object",
+      "properties": {
+        "postId": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorHandle": { "type": "string" },
+        "authorPhotoUrl": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["postId", "authorId", "authorName", "authorHandle", "content", "createdAt"]
+    },
+    "Follow": {
+      "title": "Follow",
+      "description": "Directed follow relationship between two users.",
+      "type": "object",
+      "properties": {
+        "followerId": { "type": "string" },
+        "followedId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["followerId", "followedId", "createdAt"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "1-on-1 direct message conversation between two users.",
+      "type": "object",
+      "properties": {
+        "participantIds": { "type": "array" },
+        "participantNames": { "type": "object" },
+        "participantHandles": { "type": "object" },
+        "participantPhotos": { "type": "object" },
+        "lastMessage": { "type": "string" },
+        "lastSenderId": { "type": "string" },
+        "lastMessageAt": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["participantIds", "participantNames", "participantHandles", "lastMessage", "lastSenderId", "lastMessageAt", "createdAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "An immutable direct message within a conversation.",
+      "type": "object",
+      "properties": {
+        "conversationId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "participantIds": { "type": "array" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["conversationId", "senderId", "participantIds", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users_public/{userId}": {
+      "schema": { "$ref": "#/entities/PublicUser" },
+      "description": "Public social profile documents."
+    },
+    "/users_private/{userId}": {
+      "schema": { "$ref": "#/entities/PrivateUser" },
+      "description": "Owner-only PII documents."
+    },
+    "/users_private/{userId}/bookmarks/{postId}": {
+      "schema": { "$ref": "#/entities/Bookmark" },
+      "description": "Owner-only bookmarked posts."
+    },
+    "/users_private/{userId}/likedPosts/{postId}": {
+      "schema": { "$ref": "#/entities/UserLikedPost" },
+      "description": "Owner-only liked post index."
+    },
+    "/posts/{postId}": {
+      "schema": { "$ref": "#/entities/Post" },
+      "description": "Social feed posts."
+    },
+    "/posts/{postId}/likes/{userId}": {
+      "schema": { "$ref": "#/entities/PostLike" },
+      "description": "Per-user atomic like markers for a post."
+    },
+    "/posts/{postId}/comments/{commentId}": {
+      "schema": { "$ref": "#/entities/Comment" },
+      "description": "Comments on a post."
+    },
+    "/follows/{followId}": {
+      "schema": { "$ref": "#/entities/Follow" },
+      "description": "Follow relationships keyed as followerId_followedId."
+    },
+    "/conversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/Conversation" },
+      "description": "1-on-1 direct message threads."
+    },
+    "/conversations/{conversationId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/Message" },
+      "description": "Direct messages inside a conversation."
+    }
+  }
+}
